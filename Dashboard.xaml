@@ -1,0 +1,47 @@
+﻿<Window x:Class="BankAccountManagerWpf.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankAccountManagerWpf" d:DataContext="{d:DesignInstance Type=local:BankAccount}"
+        mc:Ignorable="d"
+         Height="400" Width="500">
+    <Grid Margin="10">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="DarkGray"/>
+                <GradientStop Color="#FF688E94" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontFamily="Times New Roman" FontSize="25" Text="Your balance: "/>
+            <TextBlock Name="UserBalanceTextBlock" Text="{Binding UserBalance}" FontFamily="Times New Roman" FontSize="25"></TextBlock>
+            <TextBlock Text="Euro" Padding="5,0,0,0" FontFamily="Times New Roman" FontSize="25"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="-50,0,0,0">
+            <TextBlock FontSize="15" >What do you want to do?</TextBlock></WrapPanel>
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="DepositButton" Padding="7" FontSize="15" Margin="30,0" Content="Deposit" Click="DepositButton_Click"></Button>
+            <Button Name="WithdrawButton" Padding="7" FontSize="15" Margin="30,0" Content="Withdraw" Click="WithdrawButton_Click"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="TransferButton" Padding="7" FontSize="15" Margin="30,0" Content="Transfer" Click="TransferButton_Click"></Button>
+            <Button Name="AllMovementsButton" Padding="7" FontSize="15" Margin="30,0" Content="All Movements" Click="AllMovementsButton_Click"></Button>
+        </WrapPanel>
+        <Button Name="LogOutButton" Grid.Row="4" Width="100" Padding="7" FontSize="15" Margin="30,0" Content="Log out" Click="LogOutButton_Click"></Button>
+        
+        
+    </Grid>
+</Window>
