@@ -48,7 +48,7 @@ namespace BankAccountManagerWpf
             {
                 //if the credentials match any user the dashboard window opens
                 Dashboard dashboard = new(CurrentUser, _allUsers);
-                MessageBox.Show($"Wellcome {CurrentUser.FullName}", "Login Successfull", MessageBoxButton.OK);
+                MessageBox.Show($"Wellcome {CurrentUser.FullName} to your account", "Login Successfull", MessageBoxButton.OK);
                 dashboard.Show();
                 
             }
