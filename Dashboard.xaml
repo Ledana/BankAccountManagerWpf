@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontFamily="Times New Roman" FontSize="25" Text="Your balance: "/>
-            <TextBlock Name="UserBalanceTextBlock" Text="{Binding UserBalance}" FontFamily="Times New Roman" FontSize="25"></TextBlock>
+            <TextBlock Name="UserBalanceTextBlock" Text="{Binding BankAccount.Balance}" FontFamily="Times New Roman" FontSize="25"></TextBlock>
             <TextBlock Text="Euro" Padding="5,0,0,0" FontFamily="Times New Roman" FontSize="25"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="-50,0,0,0">

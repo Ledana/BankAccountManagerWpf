@@ -20,7 +20,7 @@ namespace BankAccountManagerWpf
     /// <summary>
     /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class Dashboard : Window, INotifyPropertyChanged
+    public partial class Dashboard : Window//, INotifyPropertyChanged
     {
         //we save the user and the list to pass their values to other windows as well
         private User? _currentUser;
@@ -34,24 +34,14 @@ namespace BankAccountManagerWpf
             get => _userBalance;
             set
             {
-                if (_userBalance != value)
-                {
-                    _userBalance = value;
-                    NotifyPropertyChanged();
-                }
+                _userBalance = value;
             }
         }
         
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         public Dashboard(User currentUser, UserRepository allUsers)
         {
             InitializeComponent();
-            this.DataContext = this;
+            this.DataContext = currentUser;
             
             try
             {
