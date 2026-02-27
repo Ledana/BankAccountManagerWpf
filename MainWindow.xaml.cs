@@ -24,15 +24,10 @@ namespace BankAccountManagerWpf
         public MainWindow()
         {
             InitializeComponent();
-            try
-            {
+            
                 //getting all the hardcoded users
                 _allUsers = new();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.GetType() + e.StackTrace);
-            }
+            
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
