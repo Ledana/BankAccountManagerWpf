@@ -49,11 +49,16 @@ namespace BankAccountManagerWpf
                 //if the credentials match any user the dashboard window opens
                 Dashboard dashboard = new(CurrentUser, _allUsers);
                 MessageBox.Show($"Wellcome {CurrentUser.FullName} to your account", "Login Successfull", MessageBoxButton.OK, MessageBoxImage.Information);
+                MyMethod();
                 dashboard.Show();
                 
             }
             else
                 MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        void MyMethod()
+        {
+            MessageBox.Show("Hello");
         }
     }
 }
