@@ -56,6 +56,18 @@ namespace BankAccountManagerWpf
             else
                 MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        
+        void TestMethod1()
+        {
+
+        }
+        void TestMethod2()
+        {
+
+        }
+        void TestMethod3()
+        {
+
+        }
+
     }
 }
