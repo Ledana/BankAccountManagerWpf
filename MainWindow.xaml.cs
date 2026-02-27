@@ -51,7 +51,9 @@ namespace BankAccountManagerWpf
                 MessageBox.Show($"Wellcome {CurrentUser.FullName} to your account", "Login Successfull", MessageBoxButton.OK, MessageBoxImage.Information);
                 
                 dashboard.Show();
-                
+                //clearing the textboxes so the next user has them empty
+                UsernameTextBox.Clear();
+                PasswordBox.Clear();
             }
             else
                 MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
