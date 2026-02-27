@@ -2,6 +2,8 @@ My first ever project in c#. it stimulates a bank account manager app
 since i am a total begginer and still dont know to work with databases i have hardcoded 
 some users and you can find their credentials in the users.txt
 
-i would love to see suggestions and advices on how to improve my skills. i have been
-learning c# for a while and alawys worked on console projects. i wanted to see 
-some real action so i tried this with wpf.
+i would love to see suggestions and advices on how to improve my skills. about unhandled
+warnings, encapsulation bugs etc.
+
+i have been learning c# for a while and alawys worked on console projects. 
+i wanted to see some real action so i tried this with wpf.
