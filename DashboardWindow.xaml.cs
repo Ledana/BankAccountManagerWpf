@@ -20,7 +20,7 @@ namespace BankAccountManagerWpf
     /// <summary>
     /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class Dashboard : Window//, INotifyPropertyChanged
+    public partial class Dashboard : Window
     {
         //we save the user and the list to pass their values to other windows as well
         private User? _currentUser;
