@@ -15,13 +15,13 @@ namespace BankAccountManagerWpf
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
         //we create a userrepository and user so we can save their values and pass them
         //to other windows through their ctor
         private UserRepository _allUsers;
         public User? CurrentUser;
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
             
