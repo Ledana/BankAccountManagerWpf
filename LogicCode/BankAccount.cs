@@ -36,7 +36,7 @@ namespace BankAccountManagerWpf
 
         public BankAccount(string id, decimal balance = 0m)
         {
-            Balance = 0m;
+            Balance = balance;
             UserId = id;
         }
 

@@ -21,8 +21,8 @@ namespace BankAccountManagerWpf
     {
         //we create a userrepository and user so we can save their values and pass them
         //to other windows through their ctor
-        private UserRepository _allUsers;
-        //private List<User> _allUsers = [];
+        //private IUserRepository _allUsers = new UserRepository();
+        private IUserRepository _allUsers;
         public User? CurrentUser;
         public LoginWindow()
         {
@@ -33,22 +33,14 @@ namespace BankAccountManagerWpf
             try
             {
                 string connectionPath = "Data Source=userSql.db;";
-                using (SqliteConnection connection = new(connectionPath))
-                {
-                    connection.Open();
-                    {
-                        connection.Open();
-                        //DatabaseSeeder.SeedUsers(connection);
-                    }
-                    //DbUserRepository userRepository = new();
-                    //_allUsers = userRepository.GetUsers();
-                }
+
+                _allUsers = new DbUserRepository(connectionPath);
+                //_allUsers = new UserRepository();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)

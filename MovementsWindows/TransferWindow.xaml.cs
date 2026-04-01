@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankAccountManagerWpf.LogicCode;
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
 using System.Globalization;
@@ -26,8 +27,8 @@ namespace BankAccountManagerWpf
         private User? _currentUser;
         
         //this window is why i needed the allusers. to find the account to which we transfer
-        private UserRepository _allUsers;
-        public TransferWindow(User? currentUser, UserRepository? allUsers)
+        private IUserRepository _allUsers;
+        public TransferWindow(User? currentUser, IUserRepository? allUsers)
         {
             InitializeComponent();
 

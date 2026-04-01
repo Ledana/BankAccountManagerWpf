@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankAccountManagerWpf.LogicCode;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BankAccountManagerWpf
 {
     //hardcoded users with full name and password
     //inherits from user to set the paswword
-    public class UserRepository 
+    public class UserRepository : IUserRepository
     {
         private readonly List<User> _users =
                 [
@@ -21,11 +22,7 @@ namespace BankAccountManagerWpf
                 new User("Laila Martini") { Pasword = "Laila123"},
                 new User("Violet Vi") {Pasword = "Violet123"}
                 ];
-
-        public UserRepository()
-        {
-
-        }
+        //public List<User> Users { get { return _users; } }
 
         //when in the main window the user puts username and password this method checks in
         //hard coded users to find the first match
@@ -41,6 +38,11 @@ namespace BankAccountManagerWpf
         {
             return _users.FirstOrDefault(u =>
             u.UserId == id);
+        }
+
+        public List<User> GetUsers()
+        {
+            throw new NotImplementedException();
         }
     }
 }

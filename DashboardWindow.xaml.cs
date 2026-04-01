@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankAccountManagerWpf.LogicCode;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -24,7 +25,7 @@ namespace BankAccountManagerWpf
     {
         //we save the user and the list to pass their values to other windows as well
         private User? _currentUser;
-        private UserRepository? _allUsers;
+        private IUserRepository? _allUsers;
 
         //we create the balance prop so we can see the changes in the window
         private decimal _userBalance;
@@ -38,7 +39,7 @@ namespace BankAccountManagerWpf
             }
         }
         
-        public Dashboard(User currentUser, UserRepository allUsers)
+        public Dashboard(User currentUser, IUserRepository allUsers)
         {
             InitializeComponent();
             this.DataContext = currentUser;
