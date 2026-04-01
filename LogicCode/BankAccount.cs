@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -53,6 +54,18 @@ namespace BankAccountManagerWpf
                 Balance += amount;
                 MessageBox.Show($"You deposidet {amount} and your balance now is {_balance}");
                 _movements.Add($"You deposited {amount} in {DateTime.Now}");
+                
+                using var connection = new SqliteConnection("Data Source=userSql.db;");
+                connection.Open();
+                string updateBalanceQuery = "UPDATE UserDetails SET Balance = Balance + @amount WHERE UserId = @userId";
+
+                using (SqliteCommand cmd = new(updateBalanceQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", this.UserId);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.ExecuteNonQuery();
+                }
+
             }
         }
         public void MakeWithdraw(decimal amount)
@@ -65,6 +78,17 @@ namespace BankAccountManagerWpf
                 Balance -= amount;
                 MessageBox.Show($"You withdrawed {amount} and your balance now is {_balance}");
                 _movements.Add($"You withdrawed {amount} at {DateTime.Now}");
+
+                using var connection = new SqliteConnection("Data Source=userSql.db;");
+                connection.Open();
+                string updateBalanceQuery = "UPDATE UserDetails SET Balance = Balance - @amount WHERE UserId = @userId";
+
+                using (SqliteCommand cmd = new(updateBalanceQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", this.UserId);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
@@ -97,6 +121,26 @@ namespace BankAccountManagerWpf
 
                 MessageBox.Show($"You transfered {amount} to {targetAccount.UserId}\nYour balance is now {_balance}");
                 _movements.Add($"You transfered {amount} to {targetAccount.UserId} at {DateTime.Now}");
+
+                using var connection = new SqliteConnection("Data Source=userSql.db;");
+                connection.Open();
+                string updateThisBalanceQuery = "UPDATE UserDetails SET Balance = Balance - @amount WHERE UserId = @userId";
+
+                using (SqliteCommand cmd = new(updateThisBalanceQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", this.UserId);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.ExecuteNonQuery();
+                }
+
+                string updateTargetBalanceQuery = "UPDATE UserDetails SET Balance = Balance + @amount WHERE UserId = @userId";
+
+                using (SqliteCommand cmd = new(updateTargetBalanceQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", targetAccount.UserId);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
