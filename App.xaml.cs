@@ -9,6 +9,7 @@ namespace BankAccountManagerWpf
     /// </summary>
     public partial class App : Application
     {
+        //SQLitePCL.Batteries.Init();
     }
 
 }

@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using BankAccountManagerWpf.LogicCode;
+using Microsoft.Data.Sqlite;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,13 +22,32 @@ namespace BankAccountManagerWpf
         //we create a userrepository and user so we can save their values and pass them
         //to other windows through their ctor
         private UserRepository _allUsers;
+        //private List<User> _allUsers = [];
         public User? CurrentUser;
         public LoginWindow()
         {
             InitializeComponent();
-            
-                //getting all the hardcoded users
-                _allUsers = new();
+            //MessageBox.Show("This works");
+            //getting all the hardcoded users
+            //_allUsers = new();
+            try
+            {
+                string connectionPath = "Data Source=userSql.db;";
+                using (SqliteConnection connection = new(connectionPath))
+                {
+                    connection.Open();
+                    {
+                        connection.Open();
+                        //DatabaseSeeder.SeedUsers(connection);
+                    }
+                    //DbUserRepository userRepository = new();
+                    //_allUsers = userRepository.GetUsers();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             
         }
 

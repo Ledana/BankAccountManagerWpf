@@ -11,7 +11,20 @@ namespace BankAccountManagerWpf.LogicCode
     {
         public static void SeedUsers(SqliteConnection connection)
         {
-            string insertQuery = "INSERT INTO UserDetails (Name, UserName, UserId, PasswordHash, Balance) VALUES(@name, @userName, @userdId, @passwordHash, @balance)";
+//            string createTableQuery = @"
+//CREATE TABLE IF NOT EXISTS UserDetails (
+//    Name NVARCHAR(25) NOT NULL,
+//    UserName NVARCHAR(25) NOT NULL,
+//    UserId INTEGER,
+//    PasswordHash TEXT NOT NULL,
+//    Balance DECIMAL
+//);";
+
+//            using (var cmd = new SqliteCommand(createTableQuery, connection))
+//            {
+//                cmd.ExecuteNonQuery();
+//            }
+            string insertQuery = "INSERT INTO UserDetails (Name, UserName, UserId, PasswordHash, Balance) VALUES(@name, @userName, @userId, @passwordHash, @balance)";
 
             var testUsers = new List<(string Name, string UserName, string UserId, string Password, decimal Balance)>
             {
@@ -25,15 +38,15 @@ namespace BankAccountManagerWpf.LogicCode
                 ("Violet Vi", "Vi6797", "123456797", "Violet123", 0m)
             };
 
-            foreach (var user in testUsers)
+            foreach (var (Name, UserName, UserId, Password, Balance) in testUsers)
             {
                 using (var cmd = new SqliteCommand(insertQuery, connection))
                 {
-                    cmd.Parameters.AddWithValue("@name", user.Name);
-                    cmd.Parameters.AddWithValue("@userName", user.UserName);
-                    cmd.Parameters.AddWithValue("@userId", user.UserId);
-                    cmd.Parameters.AddWithValue("@passwordHash", PasswordHasher.HashPassword(user.Password));
-                    cmd.Parameters.AddWithValue("@balance", user.Balance);
+                    cmd.Parameters.AddWithValue("@name", Name);
+                    cmd.Parameters.AddWithValue("@userName", UserName);
+                    cmd.Parameters.AddWithValue("@userId", UserId);
+                    cmd.Parameters.AddWithValue("@passwordHash", PasswordHasher.HashPassword(Password));
+                    cmd.Parameters.AddWithValue("@balance", Balance);
                     cmd.ExecuteNonQuery();
                 }
             }
