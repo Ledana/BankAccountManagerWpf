@@ -7,3 +7,5 @@ warnings, encapsulation bugs etc.
 
 i have been learning c# for a while and alawys worked on console projects. 
 i wanted to see some real action so i tried this with wpf.
+
+i have now added acess to a database in sqlite and balance changes are saved between uses of the app.
