@@ -27,14 +27,14 @@ namespace BankAccountManagerWpf
         public LoginWindow()
         {
             InitializeComponent();
-            //MessageBox.Show("This works");
-            //getting all the hardcoded users
-            //_allUsers = new();
+
+            
             try
             {
                 string connectionPath = "Data Source=userSql.db;";
-
+                //this line gets the users form the database
                 _allUsers = new DbUserRepository(connectionPath);
+                //this line gets the users from hardcoded userrepository
                 //_allUsers = new UserRepository();
             }
             catch (Exception e)
