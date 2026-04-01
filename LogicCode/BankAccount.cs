@@ -34,7 +34,7 @@ namespace BankAccountManagerWpf
         public string? UserId;
         private List<string> _movements = [];
 
-        public BankAccount(string id)
+        public BankAccount(string id, decimal balance = 0m)
         {
             Balance = 0m;
             UserId = id;

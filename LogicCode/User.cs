@@ -37,9 +37,13 @@ namespace BankAccountManagerWpf
             BankAccount = new(this.UserId);
         }
 
-        public User()
+        public User(string userId, string userName, string fullName, string password, BankAccount bankAccount)
         {
-
+            UserId = userId;
+            UserName = userName;
+            FullName = fullName;
+            Pasword = password;
+            BankAccount = bankAccount;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace BankAccountManagerWpf
 {
     //hardcoded users with full name and password
     //inherits from user to set the paswword
-    public class UserRepository : User
+    public class UserRepository 
     {
         private readonly List<User> _users =
                 [
