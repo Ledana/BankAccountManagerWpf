@@ -21,14 +21,11 @@ namespace BankAccountManagerWpf
     {
         //we create a userrepository and user so we can save their values and pass them
         //to other windows through their ctor
-        //private IUserRepository _allUsers = new UserRepository();
         private IUserRepository _allUsers;
         public User? CurrentUser;
         public LoginWindow()
         {
-            InitializeComponent();
-
-            
+            InitializeComponent();  
             try
             {
                 string connectionPath = "Data Source=userSql.db;";
@@ -42,7 +39,6 @@ namespace BankAccountManagerWpf
                 Console.WriteLine(e);
             }
         }
-
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             var username = UsernameTextBox.Text.Trim();
